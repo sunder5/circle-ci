@@ -1,0 +1,27 @@
+version: 2.0
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - chainrx_deploy:
+          filters:
+            branches:
+              only: master
+
+jobs:
+  chainrx_deploy:
+      working_directory: ~/chainrx
+      docker:
+        - image: circleci/python:2.7
+      steps:
+        - checkout
+        - run:
+            name: Install AWS Client
+            command: sudo pip install awsebcli --upgrade
+        - run:
+            name: Create AWS credentials manually
+            command: mkdir ~/.aws && touch ~/.aws/config && chmod 600 ~/.aws/config && echo "[profile eb-cli]" > ~/.aws/config && echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config && echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+        - run:
+            name: Deploy to EBS
+            command: eb init && eb use ChainRx-Dev --region us-east-1 --profile eb-cli && eb deploy -v --staged --profile eb-cli
