@@ -2,7 +2,7 @@ branch-defaults:
   master:
     environment: chain-rx
 global:
-  application_name: ChainRx-Dev
+  application_name: chain-rx
   default_ec2_keyname: chainrx-dev
   default_platform: 64bit Amazon Linux 2018.03 v4.5.0 running Node.js
   default_region: us-east-1
