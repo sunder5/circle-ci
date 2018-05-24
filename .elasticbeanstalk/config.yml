@@ -1,3 +1,11 @@
+packages:
+  yum:
+    gcc: []
+    make: []
+    openssl-devel: []
+    libxml2: []
+    libxml2-devel: []
+    gcc-c++: []
 branch-defaults:
   master:
     environment: chain-rx
