@@ -6,6 +6,6 @@
   "dependencies": {
     "express": "^4.16.3",
     "bcrypt": "^2.0.0",
-    "sawtooth-sdk": "1.0.1"
+    "sawtooth-sdk": "1.0.4"
   }
 }
